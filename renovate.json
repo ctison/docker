@@ -1,0 +1,11 @@
+{
+  "extends": ["github>ctison/renovate"],
+  "regexManagers": [
+    {
+      "fileMatch": ["^hasura-cli/Dockerfile$"],
+      "matchStrings": ["ARG HASURA_VERSION=(?<currentValue>.+?)\n"],
+      "datasourceTemplate": "github-releases",
+      "depNameTemplate": "hasura/graphql-engine"
+    }
+  ]
+}
