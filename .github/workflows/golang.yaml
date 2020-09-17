@@ -1,6 +1,11 @@
 name: Golang
 
-on: [push, pull_request]
+on:
+  push:
+    paths:
+      - golang/
+  pull_request:
+  workflow_dispatch:
 
 jobs:
   Build-and-Push:

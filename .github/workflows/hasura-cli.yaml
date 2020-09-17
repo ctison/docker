@@ -1,6 +1,11 @@
 name: Hasura CLI
 
-on: [push, pull_request]
+on:
+  push:
+    paths:
+      - hasura-cli/
+  pull_request:
+  workflow_dispatch:
 
 jobs:
   Build-and-Push:
