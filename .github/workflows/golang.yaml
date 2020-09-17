@@ -1,0 +1,37 @@
+name: Golang
+
+on: [push, pull_request]
+
+jobs:
+  Build-and-Push:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout the source code
+        uses: actions/checkout@v2
+
+      - name: Get the version
+        id: tag
+        run: echo ::set-output name=VERSION::$(grep -oP '^FROM golang:\K[^@]+' golang/Dockerfile)
+
+      - name: Build and push image to Dockerhub
+        uses: docker/build-push-action@v1
+        with:
+          path: golang
+          repository: ctison/golang
+          tags: latest,${{steps.tag.outputs.VERSION}}
+          add_git_labels: true
+          username: ctison
+          password: ${{secrets.DOCKERHUB_PASSWORD}}
+          push: ${{ github.ref == 'refs/heads/master' }}
+
+      - name: Build and push image to Github Packages
+        if: github.ref == 'refs/heads/master'
+        uses: docker/build-push-action@v1
+        with:
+          path: golang
+          repository: ctison/docker/golang
+          tags: latest,${{steps.tag.outputs.VERSION}}
+          add_git_labels: true
+          registry: docker.pkg.github.com
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
