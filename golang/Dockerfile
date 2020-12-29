@@ -18,7 +18,7 @@ RUN curl -LO https://github.com/goreleaser/goreleaser/releases/download/"$GORELE
   rm goreleaser_Linux_x86_64.tar.gz
 
 # renovate: github-releases golangci/golangci-lint
-ARG GOLANGCI_VERSION='v1.34.0'
+ARG GOLANGCI_VERSION='v1.34.1'
 RUN curl -LO https://github.com/golangci/golangci-lint/releases/download/"$GOLANGCI_VERSION"/golangci-lint-"${GOLANGCI_VERSION#v}"-linux-amd64.tar.gz && \
   tar --no-same-{o,p} -C /usr/local/bin/ --strip=1 -xf golangci-lint-"${GOLANGCI_VERSION#v}"-linux-amd64.tar.gz golangci-lint-"${GOLANGCI_VERSION#v}"-linux-amd64/golangci-lint && \
   chmod 500 /usr/local/bin/golangci-lint && \
