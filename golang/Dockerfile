@@ -1,4 +1,4 @@
-FROM golang:1.16.0@sha256:b49b3a05d21c645a98425a006f4449bd155e74505ee19f772dd9b7432f8bd660
+FROM golang:1.16.1@sha256:443461d48809e6ef70af0cd934b16bc9db4e088fb8e756d7729d37e339ba93ed
 
 SHELL [ "/bin/bash", "--norc", "--noprofile", "-euxo", "pipefail", "-O", "nullglob", "-c" ]
 ENV LANG C.UTF-8
