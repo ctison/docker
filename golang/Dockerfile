@@ -11,7 +11,7 @@ RUN apt-get update && \
   rm -rf -- /var/lib/apt/lists/
 
 # renovate: github-releases goreleaser/goreleaser
-ARG GORELEASER_VERSION='v0.161.1'
+ARG GORELEASER_VERSION='v0.162.0'
 RUN curl -LO https://github.com/goreleaser/goreleaser/releases/download/"$GORELEASER_VERSION"/goreleaser_Linux_x86_64.tar.gz && \
   tar --no-same-{o,p} -C /usr/local/bin/ -xf goreleaser_Linux_x86_64.tar.gz goreleaser && \
   chmod 500 /usr/local/bin/goreleaser && \
