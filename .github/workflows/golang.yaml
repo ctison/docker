@@ -12,14 +12,14 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout the source code
-        uses: actions/checkout@v2
+        uses: actions/checkout@5a4ac9002d0be2fb38bd78e4b4dbde5606d7042f # renovate: tag=v2
 
       - name: Get the version
         id: tag
         run: echo ::set-output name=VERSION::$(grep -oP '^FROM golang:\K[^@]+' golang/Dockerfile)
 
       - name: Build and push image to Dockerhub
-        uses: docker/build-push-action@v1
+        uses: docker/build-push-action@3e7a4f6646880c6f63758d73ac32392d323eaf8f # renovate: tag=v1
         with:
           path: golang
           repository: ctison/golang
@@ -31,7 +31,7 @@ jobs:
 
       - name: Build and push image to Github Packages
         if: github.ref == 'refs/heads/master'
-        uses: docker/build-push-action@v1
+        uses: docker/build-push-action@3e7a4f6646880c6f63758d73ac32392d323eaf8f # renovate: tag=v1
         with:
           path: golang
           repository: ctison/docker/golang
