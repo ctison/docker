@@ -1,7 +1,7 @@
 # renovate: github-releases hasura/graphql-engine
 ARG HASURA_VERSION=v1.3.2
 
-FROM alpine:3.14.1@sha256:3afa84775f9bf065eb68694d88f1f455c80ac87063d7367b3678489e671bcad9 as base
+FROM alpine:3.14.1@sha256:eb3e4e175ba6d212ba1d6e04fc0782916c08e1c9d7b45892e9796141b1d379ae as base
 ARG HASURA_VERSION
 RUN wget -qO /usr/local/bin/hasura https://github.com/hasura/graphql-engine/releases/download/"$HASURA_VERSION"/cli-hasura-linux-amd64
 
