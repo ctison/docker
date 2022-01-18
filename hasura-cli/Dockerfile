@@ -5,7 +5,7 @@ FROM alpine:3.14.3@sha256:635f0aa53d99017b38d1a0aa5b2082f7812b03e3cdb299103fe77b
 ARG HASURA_VERSION
 RUN wget -qO /usr/local/bin/hasura https://github.com/hasura/graphql-engine/releases/download/"$HASURA_VERSION"/cli-hasura-linux-amd64
 
-FROM ctison/ubuntu@sha256:ef47c83474a5551eb46d7c7b9f4792a22424875b7a998cf0082a3dd7e6333119
+FROM ctison/ubuntu@sha256:523a06c08ad6286982e9fa6037e36b06eede9bb51274b3f7dfa632289115eaf9
 
 COPY --from=base /usr/local/bin/hasura /usr/local/bin/hasura
 RUN chmod 555 /usr/local/bin/hasura
